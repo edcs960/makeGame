@@ -23,7 +23,7 @@ public class MonsterManager : MonoBehaviour
     // Update is called once per frame
     
 
-    void Createpositions()
+    void Createpositions() // 몬스터가 생성될 위치 설정
     {
         float RSponX = 10.7f;
         float RSponY = -1f;
@@ -33,8 +33,8 @@ public class MonsterManager : MonoBehaviour
         float LSponY = -1f;
         float LSponZ = -1f;
         
-        positions[0] = new Vector3(RSponX, RSponY, RSponZ);
-        positions[1] = new Vector3(LSponX, LSponY, LSponZ);
+        positions[0] = new Vector3(RSponX, RSponY, RSponZ); // 오른쪽에서 몬스터 생성
+        positions[1] = new Vector3(LSponX, LSponY, LSponZ); // 왼쪽에서 몬스터 생성
     }
 
     void SpawnMonster()
@@ -43,22 +43,22 @@ public class MonsterManager : MonoBehaviour
         {
             if(spawnTimer > spawnDalay)
             {
-                int rand = Random.Range(0, positions.Length);
+                int rand = Random.Range(0, positions.Length); // 랜덤값을 이용하여 생성위치 결정
 
                 if(rand == 0)
                 {
                     //Prefab.localScale.Set(-1f,1f,1f);
                     Direction = 1; // 왼쪽방향 이동
-                    Prefab.localScale = new Vector3(-1f,1f,1f);
+                    Prefab.localScale = new Vector3(-1f,1f,1f); // 몬스터가 보는 방향 설정
                 }
                 else
                 {
                     //Prefab.localScale.Set(1f,1f,1f);
                     Direction = 2; // 오른쪽방향 이동
-                    Prefab.localScale = new Vector3(1f,1f,1f);
+                    Prefab.localScale = new Vector3(1f,1f,1f); // 몬스터가 보는 방향 설정
                 }
 
-                Instantiate(Prefab,positions[rand],Quaternion.identity);
+                Instantiate(Prefab,positions[rand],Quaternion.identity); // 몬스터 오브젝트 생성
 
                 spawnTimer = 0f;
             }
