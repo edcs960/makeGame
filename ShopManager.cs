@@ -1,32 +1,32 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class ShopManager : MonoBehaviour
 {
-    GameObject Ability;
-    GameObject Weapon;
+    public GameObject Ability;
+    public GameObject Weapon;
 
-    private int shop;
+    private int shop = 0;
+
     public void openshop(string shopname)
     {
         switch (shopname)
         {
             case "Ability" :
-                Ability = GameObject.FindGameObjectWithTag("Abilityshop");
                 shop = 1;
-                Ability.SetActive(true);
+                Ability.SetActive(true); // 능력상점 활성화
                 break;
             case "Weapon" :
-                Weapon = GameObject.FindGameObjectWithTag("Weaponshop");
                 shop = 2;
-                Weapon.SetActive(true);
+                Weapon.SetActive(true); // 무기상점 활성화
                 break;        
             case "exit" :
                 if(shop == 1)
-                    Ability.SetActive(false);
+                    Ability.SetActive(false); // 능력상점 비활성솨
                 else if(shop == 2)
-                    Weapon.SetActive(false);
+                    Weapon.SetActive(false); // 무기상점 비활성솨
                 shop = 0;
                 break;
         }
